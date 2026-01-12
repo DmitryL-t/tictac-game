@@ -8,10 +8,15 @@ class Board:
 		l = []
 		for i in range(3):
 			for j in range(3):
-				l.append((i, j))
+				if self.b[i][j] == None:
+					l.append((i, j))
 		return l
-	def get_c(self, p):
-		return self.b[p // 3][p % 3]
+	def get_c(self, p, p1=0):
+		if type(p) == tuple:
+			(a, b) = p
+		else:
+			a, b = p // 3, p % 3
+		return self.b[a][b]
 	def result(self):
 		h = [
 		(0, 1, 2), (3, 4, 5), (6, 7, 8),
@@ -38,13 +43,19 @@ class Board:
 		elif res == 'draw':
 			return (1 / 2, 1 / 2)
 		return None
-	def move(self, p):
-		self.b[p // 3][p % 3] = self.move
+	def move_(self, p):
+		(a, b) = p
+		self.b[a][b] = self.move
 		if self.move == 'x':
 			self.move = 'o'
 		else:
 			self.move = 'x'
 	def move_new_board(self, p):
 		board = Board(self.b, self.move)
-		board.move(p)
+		board.move_(p)
 		return board
+
+b = Board()
+while not b.result():
+	print(b.b)
+	b.move_(b.possible_moves()[0])

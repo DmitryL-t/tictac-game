@@ -1,1 +1,1 @@
-Tic-tac-toe "library" on Python
+Tic-tac-toe on Python

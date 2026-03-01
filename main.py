@@ -55,7 +55,7 @@ class Board:
 		board.move_(p)
 		return board
 
-b = Board()
-while not b.result():
-	print(b.b)
-	b.move_(b.possible_moves()[0])
+board = Board()
+while not board.result():
+	print(board.b)
+	board.move_(board.possible_moves()[0])

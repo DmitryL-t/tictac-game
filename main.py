@@ -59,3 +59,4 @@ board = Board()
 while not board.result():
 	print(board.b)
 	board.move_(board.possible_moves()[0])
+print(board.b)
